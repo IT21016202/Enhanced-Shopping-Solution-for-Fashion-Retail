@@ -1,7 +1,6 @@
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./useAuthContext";
-
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -12,8 +11,6 @@ export const useLogin = () => {
   const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
-
-
 
     const response = await fetch("/api/user/login", {
       method: "POST",
@@ -35,18 +32,15 @@ export const useLogin = () => {
       dispatch({ type: "LOGIN", payload: json });
       setIsLoading(false);
 
-
-      console.log(json)
-      if(json.user.type === 'buyer'){
-        navigate('/buyer');
+      console.log(json);
+      if (json.user.type === "buyer") {
+        navigate("/");
+      } else if (json.user.type === "seller") {
+        navigate("/seller");
       }
-      else if(json.user.type === 'seller'){
-        navigate('/seller');
-      }
-      else if(json.user.type === 'admin'){
-        navigate('/admin');
-      }
-      
+      // else if(json.user.type === 'admin'){
+      //   navigate('/admin');
+      // }
     }
 
     //console.log(json.user);

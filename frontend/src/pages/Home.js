@@ -1,7 +1,7 @@
 import React from "react";
-import Banner1 from "../images/Banner-1.jpg";
-import Banner2 from "../images/Banner-2.jpg";
-import Banner3 from "../images/Banner-3.png";
+import Banner1 from "../images/c1.jpg";
+import Banner2 from "../images/c2.jpg";
+import Banner3 from "../images/c3.jpg";
 import HomeBottom from "../components/HomeBottom";
 
 export default function Home() {
@@ -23,13 +23,28 @@ export default function Home() {
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src={Banner1} alt="First slide" />
+            <img
+              class="d-block w-100"
+              src={Banner1}
+              alt="First slide"
+              height={"500px"}
+            />
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src={Banner2} alt="Second slide" />
+            <img
+              class="d-block w-100"
+              src={Banner2}
+              alt="Second slide"
+              height={"500px"}
+            />
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src={Banner3} alt="Third slide" />
+            <img
+              class="d-block w-100"
+              src={Banner3}
+              alt="Third slide"
+              height={"500px"}
+            />
           </div>
         </div>
         <a
@@ -52,10 +67,16 @@ export default function Home() {
         </a>
       </div>
       <br></br>
-      <div style={{width: "100%", marginLeft: "auto", marginRight: "auto", textAlign: "center"}}>
-      <HomeBottom/>
+      <div
+        style={{
+          width: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          textAlign: "center",
+        }}
+      >
+        <HomeBottom />
       </div>
     </div>
-      
   );
 }

@@ -2,9 +2,14 @@ import "./ReservationSuccessful.css"; // Import custom CSS file for styling
 
 import React from "react";
 
-import { FaCheckCircle } from "react-icons/fa"
+import { FaCheckCircle } from "react-icons/fa";
 
 const ReservationSuccessful = () => {
+  // Get the current time
+  // Create a new Date object
+  var currentDate = new Date();
+  var currentTime = currentDate.getTime();
+
   return (
     <>
             {" "}
@@ -19,21 +24,16 @@ const ReservationSuccessful = () => {
               <div className="card-body d-flex flex-column align-items-center">
                            {" "}
                 <div className="icon-container">
-                                  <FaCheckCircle className="checkmark-icon" /> 
-                             {" "}
+                                  <FaCheckCircle className="checkmark-icon" />
+                               {" "}
                 </div>
                              {" "}
-                <h2 className="reservation-heading">Reservation Successful</h2> 
-                           {" "}
-                <p className="reservation-message">
-                                  Thank you for your reservation! Your booking
-                  is confirmed.              {" "}
-                </p>
-                             {" "}
+                <h2 className="reservation-heading">Payment Successful</h2>     
+                                     {" "}
                 <p className="reservation-details">
                                   Date: June 1, 2023                 <br />
-                                  Time: 8:00 PM                 <br />         
-                     {" "}
+                                  Time: 8:00 PM                 <br />
+                               {" "}
                 </p>
                            {" "}
               </div>

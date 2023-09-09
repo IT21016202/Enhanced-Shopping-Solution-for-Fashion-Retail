@@ -14,7 +14,6 @@ import Signup from "./pages/signup";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 
-import BuyerDashboard from "./components/buyer/BuyerDashboard";
 import SellerDashboard from "./components/seller/SellerDashboard";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import BuyerReqests from "./components/admin/BuyerReqests";
@@ -44,6 +43,8 @@ import CartNew from "./components/payment2/CartNew";
 import ReservationSuccessful from "./components/payment2/ReservationSuccessful";
 
 import NotAuthorized from "./pages/NotAuthorized";
+import BuyerProfile from "./components/buyer/BuyerProfile";
+import Footer from "./components/Footer.js";
 
 function App() {
   const { user } = useAuthContext();
@@ -59,25 +60,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <ToastContainer />
-        {/* <NavBar/> */}
-        <div style={{ width: "15%", float: "left" }}>{/* <SideBar/> */}</div>
-        <div style={{ width: "85%", float: "right" }}>
+        <NavBar />
+
+        {/* <div style={{ width: "15%", float: "left" }}>{<SideBar />}</div> */}
+        <div>
           <div className="pages">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home2 />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route
-                path="/buyer"
-                element={
-                  user1 && user1.user.type == "buyer" ? (
-                    <BuyerDashboard />
-                  ) : (
-                    <NotAuthorized />
-                  )
-                }
-              />
+              <Route path="/userprofile" element={<BuyerProfile />} />
+
               <Route
                 path="/seller"
                 element={
@@ -88,18 +82,9 @@ function App() {
                   )
                 }
               />
-              <Route
-                path="/admin"
-                element={
-                  user1 && user1.user.type == "admin" ? (
-                    <AdminDashboard />
-                  ) : (
-                    <NotAuthorized />
-                  )
-                }
-              />
 
               <Route path="/allProducts" element={<AllProducts />} />
+
               <Route
                 path="/addProduct"
                 element={

@@ -2,103 +2,136 @@ import React from "react";
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 import { Link } from "react-router-dom";
+import image from "../images/background/register.jpg";
 
 const signup = () => {
   const [firstname, setfName] = useState("");
-  const [lastname, setlName] = useState("");
-  const [mobilenumber, setMobileNumber] = useState("");
+  // const [lastname, setlName] = useState("");
+  // const [mobilenumber, setMobileNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setCpassword] = useState("");
   const { signup, error, isLoading } = useSignup();
-  const [type, setType] = useState("");
+  const [type, setType] = useState("buyer");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(
-      firstname,
-      lastname,
-      mobilenumber,
-      type,
-      email,
-      password,
-      confirmpassword
-    );
-  };
+    //setType("buyer");
 
-  const handleDropdown = (event) => {
-    setType(event.target.value);
+    await signup(firstname, type, email, password, confirmpassword);
   };
 
   return (
-    <form className="signup" onSubmit={handleSubmit} action="">
-      <h3>Sign Up</h3>
-      {error && <div className="error">{error}</div>}
-      <label htmlFor="">First Name</label>
-      <input
-        type="text"
-        name=""
-        onChange={(e) => setfName(e.target.value)}
-        value={firstname}
-      />
-      <label htmlFor="">Last Name</label>
-      <input
-        type="text"
-        name=""
-        onChange={(e) => setlName(e.target.value)}
-        value={lastname}
-      />
-      <label htmlFor="">Mobile Number</label>
-      <input
-        type="text"
-        name=""
-        onChange={(e) => setMobileNumber(e.target.value)}
-        value={mobilenumber}
-      />
-      <label htmlFor="">Email</label>
-      <input
-        type="email"
-        name=""
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label htmlFor="">Select Type </label>
-      <select
-        onChange={handleDropdown}
-        style={{ width: "100%", padding: "5px", borderRadius: "5px" ,marginBottom:"5px"}}
-      >
-        <option value="">Select and option</option>
-        <option value="seller">Seller</option>
-        <option value="buyer">Buyer</option>
-      </select>
+    <div id="wrapper">
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
 
-      <label htmlFor="">Password</label>
-      <input
-        type="password"
-        name=""
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-      <label htmlFor="">Password</label>
-      <input
-        type="password"
-        name=""
-        onChange={(e) => setCpassword(e.target.value)}
-        value={confirmpassword}
-      />
+        <section
+          class="full-height relative no-top no-bottom vertical-center"
+          data-stellar-background-ratio=".5"
+        >
+          <div class="overlay-gradient t50">
+            <div class="center-y relative">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div
+                    class="col-lg-5 text-light wow fadeInRight"
+                    data-wow-delay=".5s"
+                  >
+                    <div class="spacer-10"></div>
+                    <div>
+                      <img
+                        src={image}
+                        alt="My Image"
+                        width={600}
+                        height={600}
+                      />
+                    </div>
+                  </div>
 
-      <button disabled={isLoading}>Sign Up</button>
+                  <div
+                    class="col-lg-4 offset-lg-2 wow fadeIn"
+                    data-wow-delay=".5s"
+                  >
+                    <div
+                      class="box-rounded padding40"
+                      style={{ backgroundColor: "#21273e" }}
+                    >
+                      <form
+                        className="login"
+                        onSubmit={handleSubmit}
+                        action=""
+                        style={{ backgroundColor: "#21273e" }}
+                      >
+                        <br />
+                        <h3 class="mb10" style={{ color: "white" }}>
+                          Sign Up
+                        </h3>
+                        <br />
 
-      <br></br>
-      <br></br>
+                        {error && <div className="error">{error}</div>}
 
-      <div>
-        <Link className="link" to="/">
-          Already Registred ? <span>Login</span>
-        </Link>
+                        <input
+                          type="text"
+                          name=""
+                          onChange={(e) => setfName(e.target.value)}
+                          value={firstname}
+                          placeholder="Enter your name"
+                        />
+
+                        <input
+                          type="email"
+                          name=""
+                          onChange={(e) => setEmail(e.target.value)}
+                          value={email}
+                          placeholder="Enter your email address"
+                        />
+
+                        <input
+                          type="password"
+                          name=""
+                          onChange={(e) => setPassword(e.target.value)}
+                          value={password}
+                          placeholder="Enter your password"
+                        />
+
+                        <input
+                          type="password"
+                          name=""
+                          onChange={(e) => setCpassword(e.target.value)}
+                          value={confirmpassword}
+                          placeholder="Re enter your password"
+                        />
+
+                        <button
+                          disabled={isLoading}
+                          style={{ backgroundColor: "#7367ef" }}
+                        >
+                          Register
+                        </button>
+
+                        <br></br>
+                        <br></br>
+
+                        <div>
+                          <p style={{ color: "white" }}>
+                            Already registered ?
+                            <Link className="link" to="/login">
+                              <span style={{ color: "#7367ef" }}> Sign In</span>
+                            </Link>
+                          </p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </form>
+    </div>
   );
 };
 

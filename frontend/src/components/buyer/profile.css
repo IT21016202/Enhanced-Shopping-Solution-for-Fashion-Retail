@@ -1,0 +1,9 @@
+.listingNav button {
+
+    margin: 20px;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
